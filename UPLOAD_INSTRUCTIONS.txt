@@ -1,0 +1,42 @@
+GITHUB PAGES: CORRECTED PROJECT - READ FIRST
+
+Your previous GitHub upload mixed original files with corrected files.
+In particular, src/App.tsx, src/main.tsx, and public/sw.js remained old,
+while deploy.yml was placed at the wrong level.
+
+This ZIP contains a CLEAN source project with the correct directory tree.
+
+RECOMMENDED: GITHUB DESKTOP (preserves the folders)
+1. Install GitHub Desktop: https://desktop.github.com/
+2. Sign in and clone your EXISTING website repository to your computer.
+3. Extract this ZIP to a different folder (do not put the ZIP itself on GitHub).
+4. Open the cloned repository's local folder in File Explorer.
+5. Copy ALL files AND folders from the extracted ZIP into that cloned folder.
+   Choose REPLACE for files that already exist; do not delete the .git folder.
+6. In GitHub Desktop, enter a summary such as "Fix GitHub Pages deployment",
+   click Commit to main, then Push origin.
+7. On GitHub, open Settings > Pages > Build and deployment:
+   select SOURCE = GitHub Actions (not Deploy from a branch).
+8. In Actions, verify the "Deploy demo to GitHub Pages" workflow succeeds.
+9. Use the Pages URL shown under Settings > Pages. Hard refresh Ctrl+Shift+R.
+   If you still see a white screen, open in a private browser window
+   (old service-worker caches can persist in the normal window).
+
+IMPORTANT FILE LOCATIONS IN THE GITHUB REPOSITORY ROOT:
+  .github/workflows/deploy.yml      (NOT /deploy.yml)
+  src/App.tsx                        (uses HashRouter)
+  src/main.tsx                       (uses relative service worker path)
+  public/sw.js                       (uses GitHub Pages-safe paths)
+  index.html                         (Vite builds this into a static HTML page)
+  vite.config.ts                     (base: './')
+  package-lock.json                  (dependency lockfile for npm ci)
+
+DO NOT just place files like App.tsx and main.tsx in the repo root.
+DO NOT place this ZIP inside the repository.
+DO NOT put the project folder one level below the repository root.
+
+NOTE: React/Vite source code cannot be hosted directly with GitHub Pages.
+The GitHub Actions workflow must build it to dist first.
+
+This is an educational demonstration using fictional sample cards. It does
+not validate real identity documents or connect to CitizenCard.
